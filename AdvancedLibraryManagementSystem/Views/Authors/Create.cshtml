@@ -1,0 +1,16 @@
+﻿@model AdvancedLibraryManagementSystem.Models.Author
+
+<h2>Add Author</h2>
+
+<form asp-action="Create" method="post">
+    <div class="form-group">
+        <label>Author Name</label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <br />
+
+    <button type="submit" class="btn btn-success">Save</button>
+    <a asp-action="Index" class="btn btn-secondary">Back</a>
+</form>

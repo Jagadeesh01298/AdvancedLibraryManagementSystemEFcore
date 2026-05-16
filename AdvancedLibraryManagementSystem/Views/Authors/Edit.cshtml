@@ -1,0 +1,18 @@
+﻿@model AdvancedLibraryManagementSystem.Models.Author
+
+<h2>Edit Author</h2>
+
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="AuthorId" />
+
+    <div class="form-group">
+        <label>Author Name</label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <br />
+
+    <button type="submit" class="btn btn-success">Update</button>
+    <a asp-action="Index" class="btn btn-secondary">Back</a>
+</form>

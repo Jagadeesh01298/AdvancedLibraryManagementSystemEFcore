@@ -1,0 +1,27 @@
+﻿@model IEnumerable<AdvancedLibraryManagementSystem.Models.Author>
+
+<h2>Authors</h2>
+
+<a asp-action="Create" class="btn btn-primary mb-3">Add Author</a>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Author Name</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var author in Model)
+        {
+            <tr>
+                <td>@author.Name</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@author.AuthorId" class="btn btn-warning btn-sm">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@author.AuthorId" class="btn btn-danger btn-sm">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

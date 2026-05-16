@@ -1,0 +1,14 @@
+﻿@model AdvancedLibraryManagementSystem.Models.Author
+
+<h2>Delete Author</h2>
+
+<p>Are you sure you want to delete this author?</p>
+
+<h4>@Model.Name</h4>
+
+<form asp-action="Delete" method="post">
+    <input type="hidden" asp-for="AuthorId" />
+
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+</form>

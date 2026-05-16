@@ -1,0 +1,65 @@
+﻿@model IEnumerable<AdvancedLibraryManagementSystem.Models.Book>
+
+@{
+    ViewData["Title"] = "Books";
+}
+
+<h2>Books</h2>
+
+<a asp-action="Create" class="btn btn-primary mb-3">Add Book</a>
+
+<form method="get" asp-action="Index" class="mb-3">
+    <input type="text" name="searchText" value="@ViewBag.SearchText" placeholder="Search by book, author, or genre" class="form-control" />
+
+    <br />
+
+    <button type="submit" class="btn btn-info">Search</button>
+</form>
+
+<div id="message"></div>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Book Title</th>
+            <th>Published Year</th>
+            <th>Author</th>
+            <th>Genre</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var book in Model)
+        {
+            <tr>
+                <td>@book.Title</td>
+                <td>@book.PublishedYear</td>
+                <td>@book.Author?.Name</td>
+                <td>@book.Genre?.Name</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@book.BookId" class="btn btn-warning btn-sm">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@book.BookId" class="btn btn-danger btn-sm">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div>
+    <a asp-action="Index"
+       asp-route-page="@(ViewBag.CurrentPage - 1)"
+       asp-route-searchText="@ViewBag.SearchText"
+       class="btn btn-secondary @(ViewBag.CurrentPage <= 1 ? "disabled" : "")">
+        Previous
+    </a>
+
+    <span class="mx-2">Page @ViewBag.CurrentPage</span>
+
+    <a asp-action="Index"
+       asp-route-page="@(ViewBag.CurrentPage + 1)"
+       asp-route-searchText="@ViewBag.SearchText"
+       class="btn btn-secondary">
+        Next
+    </a>
+</div>

@@ -1,0 +1,44 @@
+﻿@model AdvancedLibraryManagementSystem.Models.Book
+
+<h2>Add Book</h2>
+
+<form asp-action="Create" method="post">
+    <div class="form-group">
+        <label>Book Title</label>
+        <input asp-for="Title" class="form-control" />
+        <span asp-validation-for="Title" class="text-danger"></span>
+    </div>
+
+    <br />
+
+    <div class="form-group">
+        <label>Published Year</label>
+        <input asp-for="PublishedYear" class="form-control" />
+        <span asp-validation-for="PublishedYear" class="text-danger"></span>
+    </div>
+
+    <br />
+
+    <div class="form-group">
+        <label>Author</label>
+        <select asp-for="AuthorId" asp-items="ViewBag.Authors" class="form-control">
+            <option value="">-- Select Author --</option>
+        </select>
+        <span asp-validation-for="AuthorId" class="text-danger"></span>
+    </div>
+
+    <br />
+
+    <div class="form-group">
+        <label>Genre</label>
+        <select asp-for="GenreId" asp-items="ViewBag.Genres" class="form-control">
+            <option value="">-- Select Genre --</option>
+        </select>
+        <span asp-validation-for="GenreId" class="text-danger"></span>
+    </div>
+
+    <br />
+
+    <button type="submit" class="btn btn-success">Add Book</button>
+    <a asp-action="Index" class="btn btn-secondary">Back</a>
+</form>
